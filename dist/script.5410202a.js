@@ -136893,7 +136893,7 @@ function () {
     this.companyName = faker_1.default.company.companyName();
     this.catchPhrase = faker_1.default.company.catchPhrase();
     this.location = {
-      lat: parseFloat(faker_1.default.address.lattitude()),
+      lat: parseFloat(faker_1.default.address.latitude()),
       lng: parseFloat(faker_1.default.address.longitude())
     };
   };
