@@ -136931,6 +136931,7 @@ var User =
 function () {
   // faker npmjs
   function User() {
+    this.color = 'red';
     this.name = faker_1.default.name.firstName(); // console.log(this.location);
 
     this.location = {
@@ -137022,6 +137023,7 @@ var company = new Company_1.Company();
 var customMap = new CustomMap_1.CustomMap('map'); // help typescript understand how thirdparty works
 // general name 
 // @types/googlemaps
+// customMap.google 
 // https://postimg.cc/bDNHnVbt
 
 customMap.addMarker(user);

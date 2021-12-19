@@ -1,3 +1,26 @@
+### Wrap up
+restrict the exposures from index.ts to users
+limit the number of things they can do
+
+
+🌟 Other class have to accustom to CustomMap.ts, when customMap.addMarker
+
+![](https://postimg.cc/3dwyFWK4)
+
+Interface + Class
+it will check
+```
+export interface Mappable{
+    location: {
+        lat: number;
+        lng: number;
+    };
+    markerContent(): string;
+    color: string;
+}
+```
+
+
 1. Generate a Google Dev Project 
 http://console.developers.google.com
 

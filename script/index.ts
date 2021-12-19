@@ -1,6 +1,6 @@
 import { Company } from './Company';
 import {User} from './User';
-import {CustomMap} from './CustomMap';
+import { CustomMap } from './CustomMap';
 
 // const customMap = new CustomMap();
 // customMap.googleMap wrong because
@@ -15,6 +15,7 @@ const customMap = new CustomMap('map');
 // general name 
 // @types/googlemaps
 
+// customMap.google 
 // https://postimg.cc/bDNHnVbt
 customMap.addMarker(user);
 customMap.addMarker(company);
