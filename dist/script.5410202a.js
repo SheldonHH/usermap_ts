@@ -136887,16 +136887,14 @@ var faker_1 = __importDefault(require("faker"));
 var Company =
 /** @class */
 function () {
-  function Company() {}
-
-  Company.prototype.cosntructor = function () {
+  function Company() {
     this.companyName = faker_1.default.company.companyName();
     this.catchPhrase = faker_1.default.company.catchPhrase();
     this.location = {
       lat: parseFloat(faker_1.default.address.latitude()),
       lng: parseFloat(faker_1.default.address.longitude())
     };
-  };
+  }
 
   Company.prototype.markerContent = function () {
     return "\n        <div>\n            <h1>Company Name: ".concat(this.companyName, "</h1>\n            <h3>Catchphrase: ").concat(this.catchPhrase, "</h3>\n        </div>\n        ");
@@ -136933,8 +136931,8 @@ var User =
 function () {
   // faker npmjs
   function User() {
-    this.name = faker_1.default.name.firstName();
-    console.log(this.location);
+    this.name = faker_1.default.name.firstName(); // console.log(this.location);
+
     this.location = {
       lat: parseFloat(faker_1.default.address.latitude()),
       lng: parseFloat(faker_1.default.address.longitude())
@@ -137058,7 +137056,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57087" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54949" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
