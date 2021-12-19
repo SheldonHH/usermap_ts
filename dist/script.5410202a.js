@@ -136941,7 +136941,35 @@ function () {
 }();
 
 exports.User = User;
-},{"faker":"node_modules/faker/index.js"}],"script/index.ts":[function(require,module,exports) {
+},{"faker":"node_modules/faker/index.js"}],"script/CustomMap.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.CustomMap = void 0; // hiding functionality
+// isolate google map
+
+var CustomMap =
+/** @class */
+function () {
+  // initalize 
+  function CustomMap(divId) {
+    this.googleMap = new google.maps.Map(document.getElementById(divId), {
+      // second argument look at the interface definition
+      zoom: 1,
+      center: {
+        lat: 0,
+        lng: 0
+      }
+    });
+  }
+
+  return CustomMap;
+}();
+
+exports.CustomMap = CustomMap;
+},{}],"script/index.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -136951,6 +136979,11 @@ Object.defineProperty(exports, "__esModule", {
 var Company_1 = require("./Company");
 
 var User_1 = require("./User");
+
+var CustomMap_1 = require("./CustomMap");
+
+var customMap = new CustomMap_1.CustomMap(); // customMap.googleMap wrong because
+// https://i.ibb.co/Pc6bjNH/image.png
 
 var user = new User_1.User(); // console.log(user);
 // console.log(color);
@@ -136971,7 +137004,7 @@ new google.maps.Map(document.getElementById('map'), {
   }
 }); // total surface area
 // avoid other user https://docs.google.com/presentation/d/1opM1aq3zXltaBvTTL021fLnLBh1GOJQDWE0umbne9BM/edit#slide=id.g10425a408b6_0_7
-},{"./Company":"script/Company.ts","./User":"script/User.ts"}],"../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./Company":"script/Company.ts","./User":"script/User.ts","./CustomMap":"script/CustomMap.ts"}],"../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

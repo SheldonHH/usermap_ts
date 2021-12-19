@@ -1,5 +1,11 @@
 import { Company } from './Company';
 import {User} from './User';
+import {CustomMap} from './CustomMap';
+
+const customMap = new CustomMap();
+// customMap.googleMap wrong because
+// https://i.ibb.co/Pc6bjNH/image.png
+
 const user = new User();
 // console.log(user);
 // console.log(color);
