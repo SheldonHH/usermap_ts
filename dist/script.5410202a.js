@@ -136947,8 +136947,7 @@ exports.User = User;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.CustomMap = void 0; // hiding functionality
-// isolate google map
+exports.CustomMap = void 0;
 
 var CustomMap =
 /** @class */
@@ -136956,14 +136955,31 @@ function () {
   // initalize 
   function CustomMap(divId) {
     this.googleMap = new google.maps.Map(document.getElementById(divId), {
-      // second argument look at the interface definition
+      // second argument looek at the interface definition
       zoom: 1,
       center: {
         lat: 0,
         lng: 0
       }
     });
-  }
+  } // add marker by just looking at type definition file
+  // |: or  // https://postimg.cc/68PT523N typescript will look at the properties
+  // Bad IMplementation:  // https://postimg.cc/4K54MB0w
+  // as long as they satisfy requirement for Mappable, they can be argument in addMarker
+
+
+  CustomMap.prototype.addMarker = function (mappable) {
+    // https://postimg.cc/56gVf6gN
+    // fullfill Mappable
+    // single value in typescript can have multiple different types
+    new google.maps.Marker({
+      map: this.googleMap,
+      position: {
+        lat: mappable.location.lat,
+        lng: mappable.location.lng
+      }
+    }); // pass in MarkerOption
+  };
 
   return CustomMap;
 }();
@@ -136980,29 +136996,19 @@ var Company_1 = require("./Company");
 
 var User_1 = require("./User");
 
-var CustomMap_1 = require("./CustomMap");
-
-var customMap = new CustomMap_1.CustomMap(); // customMap.googleMap wrong because
+var CustomMap_1 = require("./CustomMap"); // const customMap = new CustomMap();
+// customMap.googleMap wrong because
 // https://i.ibb.co/Pc6bjNH/image.png
 
-var user = new User_1.User(); // console.log(user);
-// console.log(color);
-// console.log('hi there!')
 
+var user = new User_1.User();
 var company = new Company_1.Company();
-console.log(company); // help typescript understand how thirdparty works
+var customMap = new CustomMap_1.CustomMap('map'); // help typescript understand how thirdparty works
 // general name 
 // @types/googlemaps
-// getElementById('map')
 
-new google.maps.Map(document.getElementById('map'), {
-  // second argument look at the interface definition
-  zoom: 1,
-  center: {
-    lat: 0,
-    lng: 0
-  }
-}); // total surface area
+customMap.addUserMarker(user);
+customMap.addCompanyMarker(company); // total surface area
 // avoid other user https://docs.google.com/presentation/d/1opM1aq3zXltaBvTTL021fLnLBh1GOJQDWE0umbne9BM/edit#slide=id.g10425a408b6_0_7
 },{"./Company":"script/Company.ts","./User":"script/User.ts","./CustomMap":"script/CustomMap.ts"}],"../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -137032,7 +137038,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54715" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57087" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

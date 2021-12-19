@@ -13,5 +13,8 @@ install Live Server Extension
 
 npm install @types/googlemaps
 
+Define interface what needed in mappable, set of instructions
+rather to say addMarket method need to accomondate User,Company and etc.
 
+User have to choose correct name, correct type.
 Cmd+Shift+P: Fold Level2
