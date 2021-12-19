@@ -9,3 +9,9 @@ http://console.developers.google.com
 
 ![](https://pbs.twimg.com/media/FG83IiKVgAE6tGw?format=png&name=900x900)
 
+install Live Server Extension
+
+npm install @types/googlemaps
+
+
+Cmd+Shift+P: Fold Level2
