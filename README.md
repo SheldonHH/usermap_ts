@@ -18,3 +18,6 @@ rather to say addMarket method need to accomondate User,Company and etc.
 
 User have to choose correct name, correct type.
 Cmd+Shift+P: Fold Level2
+
+InfoWindow is pop-up 
+marker.addListener()

@@ -136898,6 +136898,10 @@ function () {
     };
   };
 
+  Company.prototype.markerContent = function () {
+    return "\n        <div>\n            <h1>Company Name: ".concat(this.companyName, "</h1>\n            <h3>Catchphrase: ").concat(this.catchPhrase, "</h3>\n        </div>\n        ");
+  };
+
   return Company;
 }();
 
@@ -136937,6 +136941,10 @@ function () {
     };
   }
 
+  User.prototype.markerContent = function () {
+    return "User Name: ".concat(this.name);
+  };
+
   return User;
 }();
 
@@ -136969,16 +136977,26 @@ function () {
 
 
   CustomMap.prototype.addMarker = function (mappable) {
-    // https://postimg.cc/56gVf6gN
+    var _this = this; // https://postimg.cc/56gVf6gN
     // fullfill Mappable
     // single value in typescript can have multiple different types
-    new google.maps.Marker({
+
+
+    var marker = new google.maps.Marker({
       map: this.googleMap,
       position: {
         lat: mappable.location.lat,
         lng: mappable.location.lng
       }
     }); // pass in MarkerOption
+
+    marker.addListener('click', function () {
+      var infoWindow = new google.maps.InfoWindow({
+        content: mappable.markerContent()
+      });
+      infoWindow.open(_this.googleMap, marker); // reference to the map
+      // reference to the marker
+    }); //        https://postimg.cc/GBDjrsR4
   };
 
   return CustomMap;
@@ -137006,9 +137024,11 @@ var company = new Company_1.Company();
 var customMap = new CustomMap_1.CustomMap('map'); // help typescript understand how thirdparty works
 // general name 
 // @types/googlemaps
+// https://postimg.cc/bDNHnVbt
 
-customMap.addUserMarker(user);
-customMap.addCompanyMarker(company); // total surface area
+customMap.addMarker(user);
+customMap.addMarker(company); // if user satisfy the mappable interface
+// because user correctly implement the interface
 // avoid other user https://docs.google.com/presentation/d/1opM1aq3zXltaBvTTL021fLnLBh1GOJQDWE0umbne9BM/edit#slide=id.g10425a408b6_0_7
 },{"./Company":"script/Company.ts","./User":"script/User.ts","./CustomMap":"script/CustomMap.ts"}],"../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];

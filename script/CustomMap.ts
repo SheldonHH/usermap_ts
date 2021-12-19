@@ -7,6 +7,7 @@ interface Mappable{
         lat: number;
         lng: number;
     };
+    markerContent(): string;
 }
 
 export class CustomMap{
@@ -35,7 +36,7 @@ export class CustomMap{
         // https://postimg.cc/56gVf6gN
         // fullfill Mappable
         // single value in typescript can have multiple different types
-        new google.maps.Marker({ //MarkerOptions, Marker
+       const marker = new google.maps.Marker({ //MarkerOptions, Marker
             map: this.googleMap,
             position: {
                 lat: mappable.location.lat,
@@ -43,17 +44,15 @@ export class CustomMap{
             }
         }); 
         // pass in MarkerOption
-       
+
+        marker.addListener('click', () => {
+            const infoWindow = new google.maps.InfoWindow({
+                content: mappable.markerContent()
+            });
+            infoWindow.open(this.googleMap, marker);
+            // reference to the map
+            // reference to the marker
+        })
+//        https://postimg.cc/GBDjrsR4
     }
-
-    // addCompanyMarker(company: Company): void{
-    //     new google.maps.Marker({ //MarkerOptions, Marker
-    //         map: this.googleMap,
-    //         position: {
-    //             lat: company.location.lat,
-    //             lng: company.location.lng
-    //         }
-    //     }); 
-    // }
-
 }
